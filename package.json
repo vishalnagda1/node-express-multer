@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "File upload functionality using javascript multer library",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishalnagda1/node-express-multer"
+  },
+  "bugs": {
+    "url": "https://github.com/vishalnagda1/node-express-multer/issues"
+  },
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
