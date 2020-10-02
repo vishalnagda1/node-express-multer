@@ -2,6 +2,8 @@
 
 **Node Express Multer** is a file upload functionality implementation with the help of **Multer** library and **Express** server of **Node**.
 
+_**Note:** The current implementation demonstrate the excel file upload functionality._
+
 ## Requirements
 
 ##### **Prerequisites**
