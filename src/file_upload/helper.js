@@ -5,16 +5,21 @@ var fs = require('fs');
 // store a uploaded file
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        // path where the uploaded file will be stored.
-        const fileUploadPath = path.join(__basedir, "/temp/files/");
-        
-        // Create path if not exist
-        if (!fs.existsSync(fileUploadPath)) {
-            fs.mkdirSync(fileUploadPath, { recursive: true });
-        }
+        try {
+            // path where the uploaded file will be stored.
+            const fileUploadPath = path.join(__basedir, "/temp/files/");
 
-        // callback to upload a file to given path.
-        callback(null, fileUploadPath);
+            // Create path if not exist
+            if (!fs.existsSync(fileUploadPath)) {
+                fs.mkdirSync(fileUploadPath, { recursive: true });
+            }
+
+            // callback to upload a file to given path.
+            callback(null, fileUploadPath);
+        } catch (error) {
+            // send error if fails.
+            callback(new Error("Something went wrong."), false);
+        }
     },
     // This filename will be used for uploaded file.
     filename: (req, file, callback) => {
