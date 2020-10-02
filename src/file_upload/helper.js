@@ -23,4 +23,16 @@ const storage = multer.diskStorage({
     },
 });
 
-module.exports = multer({ storage });
+// To filter out the correct file
+const fileFilter = (req, file, callback) => {
+    if (
+        file.mimetype.includes("excel") ||
+        file.mimetype.includes("spreadsheetml")
+    ) {
+        callback(null, true);
+    } else {
+        callback(new Error("Please upload an excel file."), false);
+    }
+};
+
+module.exports = multer({ storage, fileFilter });
